@@ -1,5 +1,6 @@
 package club.banyuan.myblog.controller;
 
+import club.banyuan.myblog.annotation.LoggerAnnotation;
 import club.banyuan.myblog.module.Comment;
 import club.banyuan.myblog.module.User;
 import club.banyuan.myblog.service.CommentService;
@@ -24,6 +25,7 @@ public class CommentController {
     @Autowired
     CommentService commentService;
 
+    @LoggerAnnotation
     @PostMapping("/blogs/{id}/comments")
     public String commentPost(@PathVariable("id") Integer id,
                               @RequestParam("page") Integer page,

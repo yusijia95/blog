@@ -1,5 +1,6 @@
 package club.banyuan.myblog.controller;
 
+import club.banyuan.myblog.annotation.LoggerAnnotation;
 import club.banyuan.myblog.form.RegisterForm;
 import club.banyuan.myblog.module.User;
 import club.banyuan.myblog.service.UserService;
@@ -17,11 +18,13 @@ public class RegisterController {
     @Autowired
     UserService userService;
 
+    @LoggerAnnotation
     @GetMapping("/register")
     public String registerGet() {
         return "register";
     }
 
+    @LoggerAnnotation
     @PostMapping("/register")
     public String registerPost(@Valid RegisterForm registerForm, BindingResult result
 //            @RequestParam("email") String email,

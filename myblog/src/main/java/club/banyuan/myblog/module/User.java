@@ -1,14 +1,23 @@
 package club.banyuan.myblog.module;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class User implements Serializable {
     private Integer id;
     private String name;
     private String password;
     private String email;
+    private String roles;
 
     public User() {
+    }
+
+    public User(String name, String password, String email, String roles) {
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.roles = roles;
     }
 
     public User(String name, String password, String email) {
@@ -62,5 +71,13 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 }

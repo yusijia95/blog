@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
 
 @Configuration
@@ -45,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/login", "/blogs/{id}", "/register", "/css/**", "/img/**", "favicon.ico").permitAll()
-//                .antMatchers("/admin").hasRole("user")
+                .antMatchers("/admin").hasRole("admin")
                 .anyRequest().authenticated()
 
                 .and().formLogin()
@@ -53,6 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .loginPage("/login").permitAll()
                 .successHandler(successLoginHandlerController)
+                .failureForwardUrl("/login")
 //                .successForwardUrl("/login")
 //                .defaultSuccessUrl("/users/{username}")
 

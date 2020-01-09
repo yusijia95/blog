@@ -1,6 +1,7 @@
 package club.banyuan.myblog.controller;
 
 
+import club.banyuan.myblog.annotation.LoggerAnnotation;
 import club.banyuan.myblog.form.CreateBlogForm;
 import club.banyuan.myblog.module.Blog;
 import club.banyuan.myblog.module.User;
@@ -29,11 +30,13 @@ public class CreateBlogController {
     @Autowired
     BlogService blogService;
 
+    @LoggerAnnotation
     @GetMapping("/createBlog")
     public String createBlogGet(){
         return "create";
     }
 
+    @LoggerAnnotation
     @PostMapping("/createblogs")
     public String createBlogPost(@Valid CreateBlogForm createBlogForm, BindingResult result,
                                  @RequestParam("page") Optional<Integer> page,

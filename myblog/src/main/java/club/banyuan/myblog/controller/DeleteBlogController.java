@@ -1,6 +1,7 @@
 package club.banyuan.myblog.controller;
 
 
+import club.banyuan.myblog.annotation.LoggerAnnotation;
 import club.banyuan.myblog.form.CreateBlogForm;
 import club.banyuan.myblog.module.Blog;
 import club.banyuan.myblog.module.User;
@@ -30,6 +31,7 @@ public class DeleteBlogController {
     @Autowired
     BlogService blogService;
 
+    @LoggerAnnotation
     @PostMapping("/deleteBlog/{id}")
     public String createBlogPost(@PathVariable("id") Integer id,
                                  @RequestParam("page") Optional<Integer> page,
